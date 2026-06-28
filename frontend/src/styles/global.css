@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+body{
+    margin:0;
+    padding:0;
+    background:#f3f4f6;
+    font-family:Inter,Arial,sans-serif;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+button{
+    cursor:pointer;
+    transition:.25s;
+}
+
+button:hover{
+    transform:translateY(-2px);
+}
+
+input,
+select{
+    outline:none;
+}
+
+input:focus,
+select:focus{
+    border-color:#2563eb;
+    box-shadow:0 0 0 3px rgba(37,99,235,.15);
+}
+
+table{
+    border-collapse:collapse;
+}
+
+th{
+    font-weight:600;
+}
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#3b82f6;
+    border-radius:20px;
+}
+
+::-webkit-scrollbar-track{
+    background:#e5e7eb;
+}
