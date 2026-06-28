@@ -33,15 +33,25 @@ function Courses() {
   const loadCourses = async () => {
     try {
       const data = await getCourses();
+
+      // safety check (prevents crashes if API fails)
+      if (!Array.isArray(data)) {
+        setCourses([]);
+        setFilteredCourses([]);
+        return;
+      }
+
       setCourses(data);
       setFilteredCourses(data);
     } catch (error) {
-      console.error(error);
+      console.error("Failed to load courses:", error);
+      setCourses([]);
+      setFilteredCourses([]);
     }
   };
 
   return (
-    <div>
+    <div className="p-4">
 
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold">Course Management</h1>
@@ -87,9 +97,7 @@ function Courses() {
           </thead>
 
           <tbody>
-
-            {filteredCourses.map((course) => (
-
+            {filteredCourses?.map((course) => (
               <tr key={course._id} className="border-b hover:bg-gray-50">
 
                 <td className="p-3">{course.courseCode}</td>
@@ -124,9 +132,7 @@ function Courses() {
                 )}
 
               </tr>
-
             ))}
-
           </tbody>
 
         </table>
